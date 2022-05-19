@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export class extends Projects Component {
+export class Projects extends Component {
     state = {
         projects: [],
         is loaded: false
