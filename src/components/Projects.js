@@ -7,7 +7,7 @@ export class extends Projects Component {
         is loaded: false
     }
     componentDidMount() {
-        axios.get('http://box2499.temp.domains/~perillxc/gus/wp-json/wp/v2')
+        axios.get('http://box2499.temp.domains/~perillxc/gus/wp-json/wp/v2/posts')
         .then
         .cache;
     }
