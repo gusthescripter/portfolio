@@ -4,25 +4,34 @@ import axios from 'axios';
 export class Projects extends Component {
     state = {
         projects: [],
-        is loaded: false
+        isLoaded: false
     }
+
     componentDidMount() {
-        axios.get('http://box2499.temp.domains/~perillxc/gus/wp-json/wp/v2/posts')
+        axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/posts')
         .then(res => this.setState({
             posts: res.data,
-            is loaded: true
+            isLoaded: true
         }))
-        .cache(err => console.log(err));
+        .catch(err => console.log(err));
     }
-    
-    render() {
-        return (
-            <div>
 
-            <\div>
-        )
+    render() {
+        const { posts, isLoaded } = this.state;
+
+        if(isLoaded) {
+                return (
+                        <div>
+                                {
+                                posts.map(posts => (
+                                        <h4> { posts.title.rendered } </h4>
+                                        ))
+                                }
+                        </div>
+                );
+        }
     }
-    
+
 }
 
 export default Projects;
