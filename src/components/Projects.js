@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ProjectItem from './ProjectItem';
 
 export class Projects extends Component {
     state = {
@@ -8,23 +9,23 @@ export class Projects extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/posts')
+        axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/project')
         .then(res => this.setState({
-            posts: res.data,
+            projects: res.data,
             isLoaded: true
         }))
         .catch(err => console.log(err));
     }
 
     render() {
-        const { posts, isLoaded } = this.state;
+        const { projects, isLoaded } = this.state;
 
         if(isLoaded) {
                 return (
                         <div>
                                 {
-                                posts.map(posts => (
-                                        <h4> { posts.title.rendered } </h4>
+                                projects.map(projects => (
+                                        <ProjectItem key={projects.id} projects={projects} />
                                         ))
                                 }
                         </div>
