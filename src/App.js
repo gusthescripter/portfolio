@@ -11,6 +11,15 @@ class App extends Component {
     			</div>
   		);
 	}
+        render() {
+                return (
+                        <div className="App">
+                                <h1>Portfolio</h1>
+                                <Projects />
+                        </div>
+                );
+        }
+
 }
 
 export default App;
