@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
 export class ProjectItem extends Component {
 
         render() {
-		const { title } = this.props.projects
+		const { title } = this.props.projects;
+		
                 return (
                         <div>
                         	<h2>{ title.rendered }</h2>
+				
                         </div>
                 );
         }
