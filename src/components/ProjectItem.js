@@ -14,30 +14,37 @@ export class ProjectItem extends Component {
 	}
 
 	componentDidMount() {
+		const { featured_media } = this.props.project;
+		const getImageURL = axios.get(`http://gusspencer.tech/bk/wp-json/wp/v2/media/${featured_media}`).then(res => {
+			this.setState({
+				imgURL: res.data.guid.rendered,
+				isLoaded: true
+			});
+		});
+		//const { title, excerpt } = this.props.project;
+		//const getACF = axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/project');
+		//const { gallery_image_1, gallery_image_2, gallery_image_3, gallery_image_4, gallery_image_5, gallery_image_6, project_url } = this.props.project;
+		//const getImageURL = axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/media/${featured_media}');
 
-		const { title } = this.props.project;
-		const getACF = axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/project');
-		const { gallery_image_1, gallery_image_2, gallery_image_3, gallery_image_4, gallery_image_5, gallery_image_6, project_url } = this.props.project;
-		const getImageURL = axios.get('http://gusspencer.tech/bk/wp-json/wp/v2/media/${featured_media}');
-
-		Promise.all().then(res => { this.setState({
-			imgURL: res[1],
-			isLoaded: true
-		}) })
+	//	Promise.all().then(res => { this.setState({
+	//		imgURL: res[1],
+	//		isLoaded: true
+	//	}) })
 	}
 
         render() {
-		const { title, content, project_url } = this.props.project;
-		
-                return (
-                        <div>
-                        	<h2> { title.rendered } </h2>
-                        
-				<div dangerouslySetInnerHTML= {{ __html: content.rendered }} />
-
-				//<p> { project_url } </p>
-			</div>
-                );
+		const { title, content } = this.props.project;
+		const { imgURL, isLoaded } = this.state;
+		if(isLoaded) {
+                	return (
+                        	<div>
+                        		<h2> { title.rendered } </h2>
+                        		<img src={ imgURL } alt={ title.rendered } />
+					<div dangerouslySetInnerHTML= {{ __html: content.rendered }} ></div>
+				</div>
+                	);
+		}
+		return null;
         }
 }
 
