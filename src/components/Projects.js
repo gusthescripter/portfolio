@@ -24,13 +24,15 @@ export class Projects extends Component {
                 return (
                         <div>
                                 {
-                                projects.map(projects => (
-                                        <ProjectItem key={projects.id} projects={projects} />
+                                projects.map(project => (
+                                        <ProjectItem key={project.id} project={project} />
                                         ))
                                 }
                         </div>
                 );
+		
         }
+	return <h3>Loading...</h3>
     }
 
 }
