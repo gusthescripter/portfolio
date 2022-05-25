@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
@@ -33,7 +34,7 @@ export class ProjectItem extends Component {
 	}
 
         render() {
-		const { title, content } = this.props.project;
+		const { id, title, content } = this.props.project;
 		const { imgURL, isLoaded } = this.state;
 		if(isLoaded) {
                 	return (
@@ -41,6 +42,7 @@ export class ProjectItem extends Component {
                         		<h2> { title.rendered } </h2>
                         		<img src={ imgURL } alt={ title.rendered } />
 					<div dangerouslySetInnerHTML= {{ __html: content.rendered }} ></div>
+					<Link to={ `/project/${ id }` }>view</Link>
 				</div>
                 	);
 		}
