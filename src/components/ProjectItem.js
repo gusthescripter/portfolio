@@ -42,7 +42,7 @@ export class ProjectItem extends Component {
                         		<h2> { title.rendered } </h2>
                         		<img src={ imgURL } alt={ title.rendered } />
 					<div dangerouslySetInnerHTML= {{ __html: content.rendered }} ></div>
-					<Link to={ `/project/${ id }` }>view</Link>
+					
 				</div>
                 	);
 		}

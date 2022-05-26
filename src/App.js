@@ -7,14 +7,11 @@ import './App.css';
 class App extends Component {
 	render() {
 		return (
-			<Fragment>
-				<h1>Portfolio</h1>
-      				<Route exact path "/" component={Projects} />
-    				<Route exact path "/project/id" component={ProjectPage} />
-			</Fragment>
+		
+			<Projects />
   		);
 	}
 
 }
 
-export default App;
+export default App
